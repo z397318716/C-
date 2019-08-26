@@ -17,12 +17,32 @@ int Sub(int left, int right)
 }
 
 using namespace std;
-
-int main()
+void fun1(int& a, int& b)
 {
-	cout << "2\n";
-	cout << N::Add(2, 3) << endl;
-	cout << "hello!!" << endl;
+	int tmp;
+	tmp = a;
+	a = b;
+	b = tmp;
+}
+int main1()
+{
+	/*int ming = 5;
+	int &xiaoming = ming;
+
+	cout << &ming << endl;
+	cout << &xiaoming << endl;
+	cout << xiaoming << endl;*/
+
+	
+	/*int a = 5;
+	int b = 6;
+	fun1(a, b);
+	cout << a << b << endl;*/
+	
+	const int a = 10;
+	const int& ra = a;
+	double b = 1.23;
+	const double& rb = b;	// 在当前环境下该语句不会报错
 
 	system("pause");
 	return 0;
