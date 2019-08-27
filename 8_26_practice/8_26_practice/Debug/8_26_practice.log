@@ -1,18 +1,17 @@
-﻿生成启动时间为 2019/8/26 15:59:49。
+﻿生成启动时间为 2019/8/27 10:34:08。
      1>项目“E:\SHARE\C_Plus_Plus\8_26_practice\8_26_practice\8_26_practice.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         E:\vs2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Sort.cpp main.cpp
-         main.cpp
-         正在生成代码...
-         正在编译...
-         Sort.cpp
-         正在生成代码...
+         E:\vs2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt pokersort.cpp
+         pokersort.cpp
+     1>e:\share\c_plus_plus\8_26_practice\8_26_practice\pokersort.cpp(23): warning C4101: “a”: 未引用的局部变量
+     1>e:\share\c_plus_plus\8_26_practice\8_26_practice\pokersort.cpp(23): warning C4101: “b”: 未引用的局部变量
        Link:
          E:\vs2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\SHARE\C_Plus_Plus\8_26_practice\Debug\8_26_practice.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\SHARE\C_Plus_Plus\8_26_practice\Debug\8_26_practice.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\SHARE\C_Plus_Plus\8_26_practice\Debug\8_26_practice.lib" /MACHINE:X86 Debug\main.obj
+         Debug\pokersort.obj
          Debug\Sort.obj
          8_26_practice.vcxproj -> E:\SHARE\C_Plus_Plus\8_26_practice\Debug\8_26_practice.exe
      1>已完成生成项目“E:\SHARE\C_Plus_Plus\8_26_practice\8_26_practice\8_26_practice.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:01.71
+已用时间 00:00:01.24

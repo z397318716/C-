@@ -11,20 +11,14 @@ void sysReverse(int &, int);
 
 int main()
 {
-	int i = 10;
-	int j = 20;
+	int res;
+	if (strtoi("445a", res))
+	{
+		cout << res << endl;
+	} else
+	{
+		cout << "fail\n";
+	}
 
-	int& a = i;
-	int& b = j;
-
-	MySwap1(a, b);
-	cout << a << endl;
-
-	MySwap2(a, b);
-	cout << a << endl;
-
-	char z[3] = "a";
-	int z1 = (int)z;
-	cout << z1 << endl;
 	return 0;
 }

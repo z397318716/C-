@@ -15,5 +15,5 @@ void sysReverse(int &, int);
 ********************************************************************************/
 
 void MySwap1(int& a, int& b);
-bool strtoi(const char* arr, int & a);
+bool strtoi(const char* arr, int & res);
 void sysReverse(int& n, int k);

@@ -15,6 +15,24 @@ void MySort(double* arr,int size, int n = 0)
 		BubbleSort(arr, size);
 	}
 	MyPrint(arr, size);
+
+	/*
+	switch (n)
+	{
+	case 0:
+		BubbleSort(arr, size);
+		break;
+	case 1:
+
+		break;
+	case 2:
+
+		break;
+	default:
+		break;
+	}
+		*/
+	
 }
 void MyPrint(double* arr,int size)
 {
@@ -102,6 +120,24 @@ void ShellSort(double* arr, int size)
 	}
 }
 
+bool cmpunm(int a, int b)
+{
+	return a < b;
+}
+void InsertSort1(double* arr, int size,bool (*cmp)(int, int) = cmpunm)
+{
+	int i, j;
+	double tmp;
+	for (i = 1; i < size; i++)
+	{
+		tmp = arr[i];
+		for (j = i; j>0 && arr[j - 1] > tmp; j--)
+		{
+			arr[j] = arr[j - 1];
+		}
+		arr[j] = tmp;
+	}
+}
 void InsertSort(double* arr, int size)
 {
 	int i, j;
