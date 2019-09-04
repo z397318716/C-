@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 /**************************************************
@@ -82,6 +83,25 @@ int CountSex(student* src, int n, bool sex)
 	}
 	return count;
 }
+bool CmpEql(student a, student b)
+{
+	return a.age == b.age;
+}
+int countS(student* st, int n,student value, bool(*cmp)(student, student))
+{
+	int i;
+	int count = 0;
+	for (i = 0; i < n; i++)
+	{
+		if (cmp(st[i]), value)
+		{
+			count++;
+		}
+	}
+	return count;
+}
+
+
 int main()
 {
 	student src[3];
@@ -100,6 +120,9 @@ int main()
 	cout << age << endl;
 	cout << cla << endl;
 	cout << sex << endl;
+
+
+
 
 	system("pause");
 	return 0;
