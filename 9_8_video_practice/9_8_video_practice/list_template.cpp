@@ -39,17 +39,6 @@ public:
 
 int main()
 {
-	Sales_item* book;
-	int i = 0;
-	while (i < 10)
-	{
-		cin >> book[i];
-		i++;
-	}
-	while (i >= 0)
-	{
-		cout << book[i];
-		i--;
-	}
+	cout << "\t";
 	return 0;
 }
