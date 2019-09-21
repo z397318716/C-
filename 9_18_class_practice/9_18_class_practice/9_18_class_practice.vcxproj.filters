@@ -15,15 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="test.cpp">
+    <ClCompile Include="HighAcc.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="String.h">
+    <ClInclude Include="HighAcc.h">
       <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>
