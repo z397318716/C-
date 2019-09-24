@@ -69,6 +69,8 @@
     <ClCompile Include="oj3.cpp" />
     <ClCompile Include="oj4.cpp" />
     <ClCompile Include="oj5.cpp" />
+    <ClCompile Include="oj6_telephone_num.cpp" />
+    <ClCompile Include="OJ_max_sum_subarray.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

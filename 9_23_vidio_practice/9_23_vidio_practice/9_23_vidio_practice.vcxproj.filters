@@ -30,5 +30,11 @@
     <ClCompile Include="oj5.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="oj6_telephone_num.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OJ_max_sum_subarray.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
