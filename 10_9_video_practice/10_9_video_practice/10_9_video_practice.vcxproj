@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{23B73D55-AC36-4FCD-8AED-BD89D074A08D}</ProjectGuid>
-    <RootNamespace>My9_24_practice</RootNamespace>
+    <ProjectGuid>{A166879A-1D94-458B-9CA4-F56768526EFF}</ProjectGuid>
+    <RootNamespace>My10_9_video_practice</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -64,13 +64,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="My_list.cpp" />
-    <ClCompile Include="num.c" />
-    <ClCompile Include="test.cpp" />
-    <ClCompile Include="test1.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="My_list.h" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="OJ.cpp" />
+    <ClCompile Include="Priority_queue.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
