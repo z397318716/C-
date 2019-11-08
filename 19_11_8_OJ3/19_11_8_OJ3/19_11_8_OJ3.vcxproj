@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7FA11F00-48AC-4E9A-8CED-6361E2A1F09C}</ProjectGuid>
-    <RootNamespace>My19_11_7_OJ1</RootNamespace>
+    <ProjectGuid>{39EF5809-D229-4402-A3A1-EC8EFC09B050}</ProjectGuid>
+    <RootNamespace>My19_11_8_OJ3</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -64,7 +64,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="Day01_Test.cpp" />
     <ClCompile Include="test1.cpp" />
     <ClCompile Include="test2.cpp" />
   </ItemGroup>
