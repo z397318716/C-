@@ -4,7 +4,7 @@
 
 using namespace std;
 
-
+// 将 32位十进制数m 转换为n进制数 
 string Solution(int m, int n)
 {
 	string s1;
