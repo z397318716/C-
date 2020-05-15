@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include<assert.h>
 using namespace std;
 
 
@@ -78,8 +79,10 @@ public:
 				return make_pair(cur, false);
 			}
 		}
+		// 记录新插入的节点
+		Node *newnode = new Node(kv);
 		// 判断新插入的结点是其父结点的左孩子还是右孩子节点
-		cur = new Node(kv);
+		cur = newnode;
 		cur->_bf = 0;
 		if (parent->_kv.first > kv.first)
 			parent->_left = cur;
@@ -95,7 +98,7 @@ public:
 
 			通过 cur 的位置更新 parent 的平衡因子, 更新完成后
 			1. 如果 parent->_bf == 1 || -1, 说明parent为根的子树的高度也变了, 继续向上更新
-			2. 如果 parent->_bf == 1 || -2, 说明parent为根的子树已经不平衡, 需要旋转处理
+			2. 如果 parent->_bf == 2 || -2, 说明parent为根的子树已经不平衡, 需要旋转处理
 			3. 如果parent->_bf == 0, 说明parent所在的子树原来的高度是1/-1. 现在把矮的那边给填上了, parent所在的子树高度不变, 停止更新.
 		*/
 
@@ -111,36 +114,53 @@ public:
 				parent->_bf -= 1;
 			}
 
-			if (parent->_bf == 1 || parent->_bf == -1)
+			if (parent->_bf == 0)
+			{
+				break;
+			}
+			else if (parent->_bf == 1 || parent->_bf == -1)
 			{
 				cur = cur->_parent;
 				parent = parent->_parent;
 			}
-			else if (parent->_bf == 0)
-			{
-				break;
-			}
+			
 			else if (parent->_bf == 2 || parent->_bf == -2)
 			{
 				// 旋转处理------不能破坏二叉搜索树的原则
 				
 				// 右单旋
-				if (parent->_bf == -2 || cur->_bf == -1)
+				if (parent->_bf == -2 && cur->_bf == -1)
 				{
 					RotateR(parent);
 				}
 				// 左单旋
-				else if (parent->_bf == 2 || cur->_bf == 1)
+				else if (parent->_bf == 2 && cur->_bf == 1)
 				{
 					RotateL(parent);
 				}
 				// 双旋
+				else if (parent->_bf == -2 && cur->_bf == 1)
+				{
+					// 先对 cur 进行左单旋-在对 parent 进行右单旋
+					RotateL(cur);
+					RotateR(parent);
+				}
+				else if (parent->_bf == 2 && cur->_bf == -1)
+				{
+					// 先右旋 后左旋
+					RotateR(cur);
+					RotateL(parent);
+				}
+				else
+				{
+					assert(false);
+				}
 
 				break;
 			}
 		}
 
-		return make_pair(cur, true);
+		return make_pair(newnode, true);
 	}
 
 	// 左旋处理
@@ -200,7 +220,7 @@ public:
 		{
 			_root = subL;
 			parent->_parent = subL;
-			subL->parent = nullptr;
+			subL->_parent = nullptr;
 		}
 		else
 		{
@@ -217,8 +237,33 @@ public:
 			}
 			subL->_parent = parentparent;
 		}
-		
+	}
 
+	int Height(Node *root)
+	{
+		if (root == nullptr)
+			return 0;
+		int leftHeight = Height(root->_left);
+		int rightHeight = Height(root->_right);
+
+		return leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+	}
+	bool _IsBalance(Node *root)
+	{
+		if (root == nullptr)
+			return true;
+
+		int leftHeight = Height(root->_left);
+		int rightHeight = Height(root->_right);
+
+		// 递归判断AVL树是否平衡
+		return abs(leftHeight - rightHeight) < 2 
+			&& _IsBalance(root->_left)
+			&& _IsBalance(root->_right);
+	}
+	bool IsBalance()
+	{
+		return _IsBalance(_root);
 	}
 private:
 	Node* _root = nullptr;		// 此处不是初始化, 是缺省值----可以替代构造时给缺省值
@@ -227,11 +272,20 @@ private:
 void Test()
 {
 	AVLTree<int, int> test;
-	test.Insert(make_pair(1, 1));
-	test.Insert(make_pair(2, 2));
-	test.Insert(make_pair(3, 3));
-	test[3];
-	test[2] = 0;
-	test[4] = 4;
-	test[5];
+	test.Insert(make_pair(2, 1));
+	test.Insert(make_pair(1, 2));
+	test.Insert(make_pair(13, 3));
+	test.Insert(make_pair(3, 4));
+	test.Insert(make_pair(12, 4));
+	//test.Insert(make_pair(2, 2));
+
+	//test.Insert(make_pair(13, 13));
+	
+	int a[] = { 2, 1, 13, 3, 12};
+	for (auto &e : a)
+	{
+		test.Insert(make_pair(e, e));
+	}
+	
+	cout << test.IsBalance() << endl;
 }
