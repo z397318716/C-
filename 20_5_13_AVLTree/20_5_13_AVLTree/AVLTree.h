@@ -142,14 +142,38 @@ public:
 				else if (parent->_bf == -2 && cur->_bf == 1)
 				{
 					// 先对 cur 进行左单旋-在对 parent 进行右单旋
+					// 此处需要处理 双旋所导致的平衡因子更新问题
+					
 					RotateL(cur);
 					RotateR(parent);
 				}
 				else if (parent->_bf == 2 && cur->_bf == -1)
 				{
 					// 先右旋 后左旋
+					Node *subR = parent->_right;
+					Node *subRL = subR->_left;
+					int bf = subRL->_bf;
+
 					RotateR(cur);
 					RotateL(parent);
+					if (bf == 1)
+					{
+						subRL->_bf = 0;
+						parent->_bf = -1;
+						subR->_bf = 0;
+					}
+					else if (bf == -1)
+					{
+						subRL->_bf = 0;
+						parent->_bf = 0;
+						subR->_bf = 1;
+					}
+					else if (bf == 0)
+					{
+						subRL->_bf = 0;
+						parent->_bf = 0;
+						subR->_bf = 0;
+					}
 				}
 				else
 				{
@@ -194,6 +218,7 @@ public:
 			{
 				parentparent->_right = subR;
 			}
+			parent->_parent = subR;
 			subR->_parent = parentparent;
 		}
 		parent->_bf = 0;
@@ -233,10 +258,13 @@ public:
 			}
 			else
 			{
-				parent->_right = subL;
+				parentparent->_right = subL;
 			}
+			parent->_parent = subL;
 			subL->_parent = parentparent;
 		}
+		parent->_bf = 0;
+		subL->_bf = 0;
 	}
 
 	int Height(Node *root)
@@ -255,6 +283,10 @@ public:
 
 		int leftHeight = Height(root->_left);
 		int rightHeight = Height(root->_right);
+		if (rightHeight - leftHeight != root->_bf)
+		{
+			cout << root->_kv.first << "平衡因子异常" << root->_bf << endl;
+		}
 
 		// 递归判断AVL树是否平衡
 		return abs(leftHeight - rightHeight) < 2 
@@ -272,20 +304,21 @@ private:
 void Test()
 {
 	AVLTree<int, int> test;
-	test.Insert(make_pair(2, 1));
-	test.Insert(make_pair(1, 2));
-	test.Insert(make_pair(13, 3));
-	test.Insert(make_pair(3, 4));
-	test.Insert(make_pair(12, 4));
+	//test.Insert(make_pair(2, 1));
+	//test.Insert(make_pair(1, 2));
+	//test.Insert(make_pair(13, 3));
+	//test.Insert(make_pair(3, 4));
+	//test.Insert(make_pair(12, 4));
 	//test.Insert(make_pair(2, 2));
 
 	//test.Insert(make_pair(13, 13));
 	
-	int a[] = { 2, 1, 13, 3, 12};
+	int a[] = { 4, 2, 6, 1, 3, 5, 15, 7, 16, 14 };
 	for (auto &e : a)
 	{
 		test.Insert(make_pair(e, e));
 	}
 	
+	//test.Insert(make_pair(12, 12));
 	cout << test.IsBalance() << endl;
 }
