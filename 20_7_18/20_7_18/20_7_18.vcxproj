@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{728C9D09-92B4-48FD-AE26-146EF59F1734}</ProjectGuid>
-    <RootNamespace>My20_7_13</RootNamespace>
+    <ProjectGuid>{BD671165-DBB8-4238-B5AD-208EC097F099}</ProjectGuid>
+    <RootNamespace>My20_7_18</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -64,11 +64,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="friend1.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="test1.cpp" />
     <ClCompile Include="test2.cpp" />
-    <ClCompile Include="test3.cpp" />
-    <ClCompile Include="test4.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
