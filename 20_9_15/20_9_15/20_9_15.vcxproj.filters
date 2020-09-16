@@ -18,5 +18,22 @@
     <ClCompile Include="OJ8.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Kalman.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\office2019\卡尔曼滤波算法一维多传感器的简单应用_C语言\kalman.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Kalman2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="text.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="G:\office2019\卡尔曼滤波算法一维多传感器的简单应用_C语言\in.txt">
+      <Filter>源文件</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -64,7 +64,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="G:\office2019\卡尔曼滤波算法一维多传感器的简单应用_C语言\kalman.cpp" />
+    <ClCompile Include="Kalman.c" />
+    <ClCompile Include="Kalman2.cpp" />
     <ClCompile Include="OJ8.cpp" />
+    <ClCompile Include="text.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="G:\office2019\卡尔曼滤波算法一维多传感器的简单应用_C语言\in.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
