@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2A69D570-66D6-47C3-8A4C-30B1B7CB3864}</ProjectGuid>
-    <RootNamespace>My20_11_2</RootNamespace>
+    <ProjectGuid>{7C5AEFF6-996C-4F9E-9720-C4832F473A07}</ProjectGuid>
+    <RootNamespace>My20_11_3</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -64,9 +64,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="OJ39.cpp" />
-    <ClCompile Include="OJ42.cpp" />
-    <ClCompile Include="test_try.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="quick_sort.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mysort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

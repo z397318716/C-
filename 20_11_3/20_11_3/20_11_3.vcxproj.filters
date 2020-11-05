@@ -15,14 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="OJ39.cpp">
+    <ClCompile Include="quick_sort.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="OJ42.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="test_try.cpp">
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mysort.h">
       <Filter>源文件</Filter>
-    </ClCompile>
+    </ClInclude>
   </ItemGroup>
 </Project>
