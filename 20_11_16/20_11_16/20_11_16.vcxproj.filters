@@ -18,5 +18,8 @@
     <ClCompile Include="OJ60.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="OJ75.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
