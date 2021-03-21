@@ -103,6 +103,22 @@ void PostOr(BTNode<T>* root) {
 		res.pop();
 	}
 }
+template<class T>
+void FloorOrder(BTNode<T>* root) {
+	// 借助队列实现
+	std::queue<BTNode<T>*> q1;
+	if (root)
+		q1.push(root);
+	while (!q1.empty()) {
+		root = q1.front();
+		std::cout << root->_data << ' ';
+		q1.pop();
+		if (root->_lchild)
+			q1.push(root->_lchild);
+		if (root->_rchild)
+			q1.push(root->_rchild);
+	}
+}
 
 
 int main() {
@@ -124,6 +140,6 @@ int main() {
 	std::cout << std::endl;
 	PostOr(root);
 	std::cout << std::endl;
-	MYqian(root);
+	FloorOrder(root);
 	return 0;
 }

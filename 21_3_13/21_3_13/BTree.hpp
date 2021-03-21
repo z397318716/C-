@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include<stack>
+#include<queue>
 
 template<class T>
 struct BTNode {
@@ -12,28 +13,6 @@ struct BTNode {
 	BTNode<T>* _lchild;
 	BTNode<T>* _rchild;
 	T _data;
-};
-template<class T>
-class BTree {
-public:
-	typedef BTNode<T> Node;
-
-	Node* _root;
-public:
-	// 构造
-	BTree()
-		:_root(nullptr) {}
-	// 析构
-	~BTree() {
-		Destory(_root);
-	}
-	void Destory(Node* _root) {
-		if (_root) {
-			Destory(_root->_lchild);
-			Destor(_root->_rchild);
-		}
-		_root = nullptr;
-	}
 };
 // 根据前序遍历+中序遍历 构造一个二叉树
 template<class T>
