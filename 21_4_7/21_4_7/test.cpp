@@ -31,4 +31,45 @@ public:
         }
         return res;
     }
+    int hammingWeight(uint32_t n) {
+        int count = 0;
+        while (n) {
+            if (n & 1 == 1) {
+                count++;
+            }
+            n >> 1;
+        }
+        return count;
+    }
+
+    vector<int> res;
+
+    void dfs(int n, int idx, string path) {
+        if (idx == n) {
+            int val = std::stoi(path);
+            if (val != 0) {
+                res.push_back(val);
+            }
+            return;
+        }
+        for (int i = 0; i < 10; ++i) {
+            path[idx] = i + '0';
+            dfs(n, idx + 1, path);
+        }
+    }
+
+    vector<int> printNumbers(int n) {
+        string path(n, '0');
+        dfs(n, 0, path);
+        return res;
+    }
+
 };
+
+int main() {
+    uint32_t a = 00000000000000000000000000001011;
+    Solution A;
+    A.hammingWeight(a);
+
+    return 0;
+}
