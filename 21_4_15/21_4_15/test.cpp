@@ -1,6 +1,7 @@
 #include<iostream>
 #include<algorithm>
 #include<vector>
+#include<string>
 using namespace std;
 
 
@@ -58,6 +59,38 @@ public:
                 break;
             }
         }
+        return res;
+    }
+
+    vector<vector<int>> findContinuousSequence(int target) {
+        // 方法1: 双指针法, 
+        // 因为是连续正整数序列, 三种情况
+        // 1. 左右指针区间内 和小于 target 右指针 向右移动 (增加范围)
+        // 2. 左右指针区间内 和大于 target 左指针 向右移动 (减小范围)
+        // 3. 左右指针区间内 和等于 target 左指针 向右移动 并记录当前元素
+        int i = 1, j = 2;
+        vector<vector<int>> res;
+        while (i < j) {
+            if ((i + j) * (j - i + 1) / 2 < target)
+                j++;
+            else if ((i + j) * (j - i + 1) / 2 > target)
+                i++;
+            else if ((i + j) * (j - i + 1) / 2 == target) {
+                vector<int> tmp;
+                for (int k = i; k <= j; ++k)
+                    tmp.push_back(k);
+                res.push_back(tmp);
+                i++;
+            }
+        }
+        return res;
+    }
+    string reverseLeftWords(string s, int n) {
+        // 方法1: 构造被分割的两个字符串, 然后append
+        n %= s.size();
+        string s1(s.begin(), s.begin() + n);
+        string res(s.begin() + n, s.end());
+        res.append(s1);
         return res;
     }
 };
