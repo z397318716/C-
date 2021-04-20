@@ -31,11 +31,34 @@ public:
         }
         return (int)(res * n % 1000000007);
     }
+    double myPow(double x, int n) {
+        if (x == 0)
+            return 0;
+        if (n == 0)
+            return 1;
+        long long tmp = n;
+        double res = 1;
+        if (tmp < 0) {
+            x = 1 / x;
+            tmp *= -1;
+        }
+        while (tmp > 0) {
+            if ((tmp & 1) == 1)
+                res *= x;
+            x *= x;
+            tmp >>= 1;
+        }
+
+        return res;
+    }
 };
 
 int main() {
     Solution A;
     A.cuttingRope(10);
+    A.myPow(-1.00000, -2147483648);
+
+    int a = 1 & 2147483648;
 
 	return 0;
 }
