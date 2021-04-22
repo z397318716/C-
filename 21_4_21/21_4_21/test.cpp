@@ -44,6 +44,19 @@ public:
         }
         return false;
     }
+    bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
+        int i = 0;
+        stack<int> st;
+        for (auto e : pushed) {
+            st.push(e);
+            while (!st.empty() && st.top() == popped[i]) {
+                st.pop();
+                i++;
+            }
+        }
+        return st.empty();
+    }
+
 };
 
 int main() {
