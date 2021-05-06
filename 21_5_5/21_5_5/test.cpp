@@ -32,4 +32,25 @@ public:
         }
         return res;
     }
+    int translateNum(int num) {
+        string snum(to_string(num));
+        vector<int> dp(snum.size() + 1);
+        if (snum.size() < 2)
+            return 1;
+        dp[0] = 1;
+        dp[1] = 1;
+        for (int i = 1; i < snum.size(); ++i) {
+            int tmp = (snum[i - 1] - '0') * 10 + (snum[i] - '0');
+            if (snum[i - 1] == '0') {
+                dp[i + 1] = dp[i];
+            }
+            else if (tmp < 26) {
+                dp[i + 1] = dp[i - 1] + dp[i];
+            }
+            else {
+                dp[i + 1] = dp[i];
+            }
+        }
+        return dp[snum.size()];
+    }
 };
