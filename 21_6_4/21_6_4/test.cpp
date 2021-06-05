@@ -1,4 +1,8 @@
 #include<iostream>
+#include<string>
+#include<stack>
+using std::string;
+using std::stack;
 
 
 
@@ -29,5 +33,24 @@ public:
 
         }
         return a;
+    }
+    bool isValid(string s) {
+        stack<char> st;
+        for (int i = 0; i < s.size(); ++i) {
+            if (st.empty()) {
+                st.push(s[i]);
+                continue;
+            }
+            char tmp = st.top();
+            if (tmp == '(' && s[i] == ')' ||
+                tmp == '{' && s[i] == '}' ||
+                tmp == '[' && s[i] == ']') {
+                st.pop();
+            }
+            else {
+                st.push(s[i]);
+            }
+        }
+        return st.empty();
     }
 };
