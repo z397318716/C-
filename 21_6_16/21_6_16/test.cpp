@@ -1,3 +1,8 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using std::vector;
+using std::max;
 class Solution {
 public:
     bool stoneGame(vector<int>& piles) {
@@ -11,5 +16,19 @@ public:
             }
         }
         return dp[0][piles.size() - 1];
+    }
+    bool verifyPostorder(vector<int>& postorder) {
+        return recur(postorder, 0, postorder.size() - 1);
+    }
+    bool recur(vector<int>& postorder, int i, int j) {
+        if (i >= j)
+            return true;
+        int k = i;
+        while (postorder[k] < postorder[j])
+            ++k;
+        int pos = k;
+        while (postorder[k] > postorder[j])
+            k++;
+        return k == j && recur(postorder, i, pos - 1) && recur(postorder, pos, j - 1);
     }
 };
