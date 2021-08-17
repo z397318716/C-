@@ -1,8 +1,23 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 using namespace std;
 
+struct Node {
+    int key;
+    int val;
+    struct Node* prev;
+    struct Node* next;
+    Node() :key(0), val(0), prev(nullptr), next(nullptr) {}
+    Node(int _key, int _val) :key(_key), val(_val), prev(NULL), next(NULL) {}
+};
 class Solution {
+private:
+    // 定义双向链表的头尾指针，及大小参数
+    struct Node* pHead;
+    struct Node* pTail;
+    int size, capacity;
+    unordered_map<int, Node*> m1;
 public:
     /**
      * lru design
@@ -10,68 +25,84 @@ public:
      * @param k int整型 the k
      * @return int整型vector
      */
+
     vector<int> LRU(vector<vector<int> >& operators, int k) {
-        // write code here
-        // 使用数组来表示一个环形队列，数组元素使用pair<int, int>
-        // 数组首部表示优先级最低的，末尾表示优先级最高的，
-        // 使用指针left right 表示首部和末尾  首部优先级最低
-        vector<pair<int, int>> lru;
-        int left = 0, right = -1;
+        // 使用双向链表和哈希表来实现
+        // 初始化 双向链表的参数
+        pHead = new Node();
+        pTail = new Node();
+        size = 0, capacity = k;
+        pHead->next = pTail;
+        pTail->prev = pHead;
         vector<int> res;
         for (int i = 0; i < operators.size(); ++i) {
-            auto e = operators[i];
-            if (e.size() == 3) {
-                // 插入数据
-                if (right== -1 || (right + 1) % k != left) {
-                    // 数组未满，直接插入
-                    lru.push_back(make_pair(e[1], e[2]));
-                    right++;
+            // 插入数据
+            if (operators[i].size() == 3) {
+                // 首先查询是否已经存在该节点，如果存在，则更新值
+                if (m1.count(operators[i][1])) {
+                    Node* tmp = m1[operators[i][1]];
+                    tmp->val = operators[i][2];
+                    movetoHead(tmp);
+                    continue;
                 }
-                else {
-                    // 数组已满，
-                    left = (left + 1) % k;
-                    right = (right + 1) % k;
-                    lru[right] = make_pair(e[1], e[2]); //
+                // 新建结点
+                Node* tmp = new Node();
+                tmp->key = operators[i][1];
+                tmp->val = operators[i][2];
+                // 插入哈希
+                m1[tmp->key] = tmp;
+                // 插入链表头部
+                addHead(tmp);
+                ++size;
+                // 容量已满
+                if (size > capacity) {
+                    // 删除尾节点前的节点
+                    Node* tmp = delNode();
+                    m1.erase(tmp->key);
+                    delete tmp;
+                    size--;
                 }
             }
-            else {
-                // 查询数据
-                bool flag = true;
-                if (lru[right].first == e[1]) {
-                    res.push_back(lru[right].second);
-                    flag = false;
-                    // 因为要查找的元素就在 末尾 所以
-                    // 不需要更新 lru 缓存结构
-                }
-                if (flag) {
-                    for (int j = left; j != right; j = (j + 1) % k) {
-                        if (lru[j].first == e[1]) {
-                            // 找到了
-                            flag = false;
-                            res.push_back(lru[j].second);
-                            // 需要更新 lru 缓存结构
-                            pair<int, int> tmp = lru[j]; // 保存查询节点
-                            while (j != right) {
-                                lru[j] = lru[(j + 1) % k];
-                                j = (j + 1) % k;
-                            }
-                            lru[right] = tmp;
+            else {// 查询数据
+                if (m1.count(operators[i][1])) {
+                    res.push_back(m1[operators[i][1]]->val);
+                    // 移动该节点到头节点后
+                    movetoHead(m1[operators[i][1]]);
 
-                            break;
-                        }
-                    }
                 }
-                if (flag) {
-                    // 没找到
+                else {
                     res.push_back(-1);
                 }
-
-
             }
         }
 
 
         return res;
+    }
+    // 移动节点到头节点后
+    void movetoHead(Node* n) {
+        moveNode(n);
+        addHead(n);
+    }
+    // 向头节点添加
+    void addHead(Node* n) {
+        n->prev = pHead;
+        n->next = pHead->next;
+        pHead->next->prev = n;
+        pHead->next = n;
+    }
+    // 移除节点，不删除
+    void moveNode(Node* n) {
+        Node* l = n->prev;
+        Node* r = n->next;
+        l->next = r;
+        r->prev = l;
+    }
+    // 删除节点
+    Node* delNode() {
+        Node* n = pTail->prev;
+        moveNode(n);
+        return n;
     }
 };
 int main() {
